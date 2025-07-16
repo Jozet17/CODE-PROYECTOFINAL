@@ -13,25 +13,26 @@
 <body>
 
   <!-- Encabezado -->
-  <header class="encabezado">
+<header class="encabezado">
   <div class="contenedor-logo">
     <img src="{{ url_for('static', filename='imagenes/logo.jpg') }}" alt="Logo" class="logo">
   </div>
-  <div class="contenedor-botones">
+  <div class="contenedor-botones" id="botones-auth">
     <button class="boton-registro">Registrarse</button>
     <button class="boton-sesion">Iniciar Sesión</button>
     <div class="menu-icono" id="abrir-menu">&#9776;</div>
   </div>
 </header>
 
-<!-- Menú oculto inicialmente -->
+<!-- Menú -->
 <ul class="menu" id="menu">
   <li><a href="#">Inicio</a></li>
   <li><a href="#">Servicios</a></li>
-  <li><a href="#">Contacto</a></li>
-  <li><a href="#">Ramu</a></li>
-  <li><a href="#">Lum</a></li>
+  <li><a href="#">Eventos</a></li>
+  <li><a href="#">Ofertas</a></li>
+  <li><a href="#" id="cerrar-sesion" style="display: none;">Cerrar sesión</a></li>
 </ul>
+
 
 
   <!-- Video portada -->
@@ -154,14 +155,46 @@
   const menu = document.getElementById('menu');
   const abrirMenu = document.getElementById('abrir-menu');
 
-  abrirMenu.addEventListener('click', () => {
-    if (menu.style.display === 'block') {
+  // Alternar visibilidad del menú al hacer clic en el ícono ☰
+  abrirMenu.addEventListener('click', (event) => {
+    event.stopPropagation(); // Evita que el clic en el ícono cierre el menú
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  });
+
+  // Cerrar el menú si se hace clic fuera de él o del ícono
+  document.addEventListener('click', (event) => {
+    const isClickInsideMenu = menu.contains(event.target);
+    const isClickOnIcon = abrirMenu.contains(event.target);
+
+    if (!isClickInsideMenu && !isClickOnIcon) {
       menu.style.display = 'none';
-    } else {
-      menu.style.display = 'block';
     }
   });
-  </script>
+
+  // Lógica para inicio y cierre de sesión
+  let sesionIniciada = false;
+
+  const botonesAuth = document.getElementById('botones-auth');
+  const cerrarSesion = document.getElementById('cerrar-sesion');
+  const botonSesion = document.querySelector('.boton-sesion');
+
+  botonSesion.addEventListener('click', () => {
+    sesionIniciada = true;
+    botonesAuth.querySelector('.boton-registro').style.display = 'none';
+    botonesAuth.querySelector('.boton-sesion').style.display = 'none';
+    cerrarSesion.style.display = 'block';
+  });
+
+  cerrarSesion.addEventListener('click', () => {
+    sesionIniciada = false;
+    botonesAuth.querySelector('.boton-registro').style.display = 'inline-block';
+    botonesAuth.querySelector('.boton-sesion').style.display = 'inline-block';
+    cerrarSesion.style.display = 'none';
+    menu.style.display = 'none'; // También se cierra el menú al cerrar sesión
+  });
+</script>
+
+
 
 </body>
 </html>
