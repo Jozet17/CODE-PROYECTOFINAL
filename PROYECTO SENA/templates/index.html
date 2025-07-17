@@ -4,197 +4,187 @@
   <meta charset="UTF-8">
   <title>Pool Nene</title>
 
-  <!-- Estilos propios -->
   <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
-
-  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
 
-  <!-- Encabezado -->
 <header class="encabezado">
   <div class="contenedor-logo">
     <img src="{{ url_for('static', filename='imagenes/logo.jpg') }}" alt="Logo" class="logo">
   </div>
   <div class="contenedor-botones" id="botones-auth">
-    <button class="boton-registro">Registrarse</button>
-    <button class="boton-sesion">Iniciar Sesión</button>
+    <button class="boton-registro" onclick="window.location.href='/registro'">Registrarse</button>
+    <button class="boton-sesion" onclick="window.location.href='/login'">Iniciar Sesión</button>
     <div class="menu-icono" id="abrir-menu">&#9776;</div>
   </div>
 </header>
 
-<!-- Menú -->
 <ul class="menu" id="menu">
   <li><a href="#">Inicio</a></li>
   <li><a href="#">Servicios</a></li>
   <li><a href="#">Eventos</a></li>
   <li><a href="#">Ofertas</a></li>
-  <li><a href="#" id="cerrar-sesion" style="display: none;">Cerrar sesión</a></li>
+  <li><a href="/logout" id="cerrar-sesion" style="display: none;">Cerrar sesión</a></li>
 </ul>
 
+<section class="seccion-video">
+  <video autoplay muted loop playsinline>
+    <source src="{{ url_for('static', filename='videos/video.mp4') }}" type="video/mp4">
+  </video>
+  <div class="texto-video">
+    <h1>Bienvenido a Pool Nene</h1>
+    <p>Donde el juego se encuentra con la experiencia</p>
+    <a href="#nosotros" class="boton-video">Conócenos</a>
+  </div>
+</section>
 
-
-  <!-- Video portada -->
-  <section class="seccion-video">
-    <video autoplay muted loop playsinline>
-      <source src="{{ url_for('static', filename='videos/video.mp4') }}" type="video/mp4">
-    </video>
-    <div class="texto-video">
-      <h1>Bienvenido a Pool Nene</h1>
-      <p>Donde el juego se encuentra con la experiencia</p>
-      <a href="#nosotros" class="boton-video">Conócenos</a>
+<section class="seccion-carrusel">
+  <div id="carrusel-principal" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carrusel-principal" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#carrusel-principal" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#carrusel-principal" data-bs-slide-to="2"></button>
+      <button type="button" data-bs-target="#carrusel-principal" data-bs-slide-to="3"></button>
     </div>
-  </section>
-
-  <!-- Carrusel -->
-  <section class="seccion-carrusel">
-    <div id="carrusel-principal" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carrusel-principal" data-bs-slide-to="0" class="active"></button>
-        <button type="button" data-bs-target="#carrusel-principal" data-bs-slide-to="1"></button>
-        <button type="button" data-bs-target="#carrusel-principal" data-bs-slide-to="2"></button>
-        <button type="button" data-bs-target="#carrusel-principal" data-bs-slide-to="3"></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="{{ url_for('static', filename='imagenes/mesas.jpeg') }}" class="d-block w-100 carrusel-img" alt="Mesas">
-          <div class="carousel-caption d-none d-md-block texto-carrusel">
-            <h5>Mesas de alta calidad</h5>
-            <p>Las mejores condiciones para tu juego.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="{{ url_for('static', filename='imagenes/bebidas.jpeg') }}" class="d-block w-100 carrusel-img" alt="Bebidas">
-          <div class="carousel-caption d-none d-md-block texto-carrusel">
-            <h5>Variedad de bebidas y productos</h5>
-            <p>Precios increíbles.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="{{ url_for('static', filename='imagenes/evento.png') }}" class="d-block w-100 carrusel-img img-torneo" alt="Torneos">
-          <div class="carousel-caption d-none d-md-block texto-carrusel">
-            <h5>Eventos especiales</h5>
-            <p>No te pierdas nuestros torneos.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="{{ url_for('static', filename='imagenes/bienvenido.jpg') }}" class="d-block w-100 carrusel-img" alt="Ambiente">
-          <div class="carousel-caption d-none d-md-block texto-carrusel">
-            <h5>Ambiente familiar</h5>
-            <p>Ideal para venir con amigos o en pareja.</p>
-          </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{{ url_for('static', filename='imagenes/mesas.jpeg') }}" class="d-block w-100 carrusel-img" alt="Mesas">
+        <div class="carousel-caption d-none d-md-block texto-carrusel">
+          <h5>Mesas de alta calidad</h5>
+          <p>Las mejores condiciones para tu juego.</p>
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carrusel-principal" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carrusel-principal" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      </button>
-    </div>
-  </section>
-
-  <!-- Sobre Nosotros -->
-  <section class="seccion-nosotros" id="nosotros">
-    <div class="contenedor-nosotros">
-      <h2 class="titulo-nosotros">¿Quiénes somos?</h2>
-      <p class="descripcion-nosotros">
-        En <strong>Pool Nene</strong> te invitamos a vivir una experiencia única donde el entretenimiento, la calidad y el buen ambiente se combinan para ofrecerte mucho más que solo mesas de pool. Nuestro espacio ha sido cuidadosamente diseñado para que te relajes, compitas, compartas y disfrutes en un entorno moderno y acogedor. Contamos con mesas profesionales, iluminación especial, música envolvente y un servicio del personal excelente con una selección exclusiva de bebidas y snacks. Además, organizamos torneos y eventos especiales pensados para tí, que querés algo diferente cada vez que salís. Ya vengas solo, en pareja o con tus amigos, en Pool Nene siempre hay una mesa esperando para tí.
-      </p>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="pie-pagina">
-    <div class="contenido-pie">
-      <div class="info-contacto">
-        <p>CALLE 18 AV ESQUÍNA BARRIO OSPINA PÉREZ - CÚCUTA</p>
-        <p>Email: contacto@poolnene.com</p>
-        <p>&copy; 2025 Pool Nene. Todos los derechos reservados.</p>
+      <div class="carousel-item">
+        <img src="{{ url_for('static', filename='imagenes/bebidas.jpeg') }}" class="d-block w-100 carrusel-img" alt="Bebidas">
+        <div class="carousel-caption d-none d-md-block texto-carrusel">
+          <h5>Variedad de bebidas y productos</h5>
+          <p>Precios increíbles.</p>
+        </div>
       </div>
-      <div class="redes-sociales">
-        <a href="https://www.facebook.com/share/12Lws1yYu4U/" target="_blank">
-          <img src="{{ url_for('static', filename='imagenes/facebook.png') }}" alt="Facebook">
-        </a>
-        <a href="https://www.instagram.com/masterpoolnene?igsh=aGkxdHZzYzFldW12" target="_blank">
-          <img src="{{ url_for('static', filename='imagenes/instagram.png') }}" alt="Instagram">
-        </a>
-        <a href="https://wa.me/573010000000" target="_blank">
-          <img src="{{ url_for('static', filename='imagenes/wasap.png') }}" alt="WhatsApp">
-        </a>
+      <div class="carousel-item">
+        <img src="{{ url_for('static', filename='imagenes/evento.png') }}" class="d-block w-100 carrusel-img img-torneo" alt="Torneos">
+        <div class="carousel-caption d-none d-md-block texto-carrusel">
+          <h5>Eventos especiales</h5>
+          <p>No te pierdas nuestros torneos.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{{ url_for('static', filename='imagenes/bienvenido.jpg') }}" class="d-block w-100 carrusel-img" alt="Ambiente">
+        <div class="carousel-caption d-none d-md-block texto-carrusel">
+          <h5>Ambiente familiar</h5>
+          <p>Ideal para venir con amigos o en pareja.</p>
+        </div>
       </div>
     </div>
-  </footer>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carrusel-principal" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carrusel-principal" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+</section>
 
-  <!-- Botón flotante de WhatsApp -->
+<section class="seccion-nosotros" id="nosotros">
+  <div class="contenedor-nosotros">
+    <h2 class="titulo-nosotros">¿Quiénes somos?</h2>
+    <p class="descripcion-nosotros">
+      En <strong>Pool Nene</strong> te invitamos a vivir una experiencia única donde el entretenimiento, la calidad y el buen ambiente se combinan para ofrecerte mucho más que solo mesas de pool. Nuestro espacio ha sido cuidadosamente diseñado para que te relajes, compitas, compartas y disfrutes en un entorno moderno y acogedor. Contamos con mesas profesionales, iluminación especial, música envolvente y un servicio del personal excelente con una selección exclusiva de bebidas y snacks. Además, organizamos torneos y eventos especiales pensados para tí. Ya vengas solo, en pareja o con tus amigos, en Pool Nene siempre hay una mesa esperando para ti.
+    </p>
+  </div>
+</section>
+
+<footer class="pie-pagina">
+  <div class="contenido-pie">
+    <div class="info-contacto">
+      <p>CALLE 18 AV ESQUÍNA BARRIO OSPINA PÉREZ - CÚCUTA</p>
+      <p>Email: contacto@poolnene.com</p>
+      <p>&copy; 2025 Pool Nene. Todos los derechos reservados.</p>
+    </div>
+    <div class="redes-sociales">
+      <a href="https://www.facebook.com/share/12Lws1yYu4U/" target="_blank">
+        <img src="{{ url_for('static', filename='imagenes/facebook.png') }}" alt="Facebook">
+      </a>
+      <a href="https://www.instagram.com/masterpoolnene?igsh=aGkxdHZzYzFldW12" target="_blank">
+        <img src="{{ url_for('static', filename='imagenes/instagram.png') }}" alt="Instagram">
+      </a>
+      <a href="https://wa.me/573010000000" target="_blank">
+        <img src="{{ url_for('static', filename='imagenes/wasap.png') }}" alt="WhatsApp">
+      </a>
+    </div>
+  </div>
+</footer>
+
 <div class="whatsapp-float">
   <a href="https://wa.me/573010000000" target="_blank">
     <img src="{{ url_for('static', filename='imagenes/descarga.jpeg') }}" alt="WhatsApp">
   </a>
 </div>
 
-<!-- Botón flotante de Facebook -->
 <div class="facebookk-float">
   <a href="https://www.facebook.com/share/12Lws1yYu4U/" target="_blank">
     <img src="{{ url_for('static', filename='imagenes/facebookk.png') }}" alt="Facebook">
   </a>
 </div>
 
-<!-- Botón flotante de instagram -->
 <div class="instagramm-float">
   <a href="https://www.instagram.com/masterpoolnene?igsh=aGkxdHZzYzFldW12" target="_blank">
     <img src="{{ url_for('static', filename='imagenes/instagramm.png') }}" alt="Instagram">
   </a>
 </div>
-  
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
   const menu = document.getElementById('menu');
   const abrirMenu = document.getElementById('abrir-menu');
+  const botonesAuth = document.getElementById('botones-auth');
+  const cerrarSesion = document.getElementById('cerrar-sesion');
 
-  // Alternar visibilidad del menú al hacer clic en el ícono ☰
-  abrirMenu.addEventListener('click', (event) => {
-    event.stopPropagation(); // Evita que el clic en el ícono cierre el menú
-    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  abrirMenu.addEventListener('click', (e) => {
+    e.stopPropagation();
+    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
   });
 
-  // Cerrar el menú si se hace clic fuera de él o del ícono
-  document.addEventListener('click', (event) => {
-    const isClickInsideMenu = menu.contains(event.target);
-    const isClickOnIcon = abrirMenu.contains(event.target);
-
-    if (!isClickInsideMenu && !isClickOnIcon) {
+  document.addEventListener('click', (e) => {
+    if (!menu.contains(e.target) && !abrirMenu.contains(e.target)) {
       menu.style.display = 'none';
     }
   });
 
-  // Lógica para inicio y cierre de sesión
-  let sesionIniciada = false;
-
-  const botonesAuth = document.getElementById('botones-auth');
-  const cerrarSesion = document.getElementById('cerrar-sesion');
-  const botonSesion = document.querySelector('.boton-sesion');
-
-  botonSesion.addEventListener('click', () => {
-    sesionIniciada = true;
+  const usuarioIniciado = {{ (session.get('usuario') is not none) | tojson }};
+  if (usuarioIniciado) {
     botonesAuth.querySelector('.boton-registro').style.display = 'none';
     botonesAuth.querySelector('.boton-sesion').style.display = 'none';
     cerrarSesion.style.display = 'block';
-  });
-
-  cerrarSesion.addEventListener('click', () => {
-    sesionIniciada = false;
-    botonesAuth.querySelector('.boton-registro').style.display = 'inline-block';
-    botonesAuth.querySelector('.boton-sesion').style.display = 'inline-block';
+  } else {
     cerrarSesion.style.display = 'none';
-    menu.style.display = 'none'; // También se cierra el menú al cerrar sesión
-  });
+  }
+
+  const mensaje = {{ mensaje | tojson }};
+  if (mensaje) {
+    const div = document.createElement('div');
+    div.textContent = mensaje;
+    div.style.position = 'fixed';
+    div.style.top = '50%';
+    div.style.left = '50%';
+    div.style.transform = 'translate(-50%, -50%)';
+    div.style.background = '#1eff9a';
+    div.style.color = '#000';
+    div.style.padding = '15px 25px';
+    div.style.fontSize = '20px';
+    div.style.borderRadius = '12px';
+    div.style.zIndex = '9999';
+    div.style.boxShadow = '0 0 10px rgba(0,0,0,0.5)';
+    document.body.appendChild(div);
+
+    setTimeout(() => {
+      div.remove();
+    }, 3000);
+  }
 </script>
-
-
 
 </body>
 </html>

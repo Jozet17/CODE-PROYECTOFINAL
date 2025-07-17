@@ -357,3 +357,24 @@ html, body {
 .enlace-verde:hover {
   text-decoration: underline;
 }
+
+#mensaje-alerta {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #1eaa6f;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  z-index: 9999;
+  animation: desaparecer 3s ease forwards;
+}
+
+@keyframes desaparecer {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; display: none; }
+}
