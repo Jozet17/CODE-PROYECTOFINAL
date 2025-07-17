@@ -293,9 +293,9 @@ html, body {
   display: block;
 }
 
-/*Formularios de registro e inicio de sesión*/
+/* Formularios de registro e inicio de sesión */
 .fondo-form {
-  background-color: black;
+  background-color: #4a5251c7 !important; /* Gris muy oscuro que combina con negro */
   color: white;
   font-family: Arial, sans-serif;
   min-height: 100vh;
@@ -304,10 +304,10 @@ html, body {
 }
 
 .caja-formulario {
-  background-color: #1a1a1a;
+  background-color: #000000; /* Fondo del formulario negro puro */
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 0 18px #1eff9a55;
+  box-shadow: 0 0 20px #1eff9a55;
 }
 
 .logo-formulario {
@@ -335,12 +335,15 @@ html, body {
 
 .boton-verde {
   background-color: #1eff9a;
-  color: black;
+  color: rgb(207, 189, 189) !important;
   font-weight: bold;
   border: none;
-  padding: 10px;
+  padding: 5px !important;
   box-shadow: 0 0 12px #1eff9a88;
   transition: all 0.2s ease-in-out;
+  width: 170px !important;
+  margin-left: 120px !important;
+  
 }
 
 .boton-verde:hover {
