@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
+from datetime import datetime # Importar datetime para el cálculo de la edad
 
 app = Flask(__name__)
-app.secret_key = 'clave_secreta_segura'
+app.secret_key = 'clave_secreta_segura' # ¡Cambia esto por una clave secreta fuerte en producción!
 
 # Esta parte se reemplazará por la base de datos
-usuarios = {}  # Diccionario temporal: {correo: {"nombre": ..., "clave": ...}}
+usuarios = {}  # Diccionario temporal: {correo: {"nombre": ..., "clave": ..., "correo": ...}}
 
 @app.route('/')
 def index():
@@ -20,7 +21,6 @@ def registro():
         fecha_nacimiento = request.form['fecha_nacimiento']
 
         # Verificación de edad
-        from datetime import datetime, timedelta
         hoy = datetime.today()
         fecha_nac = datetime.strptime(fecha_nacimiento, '%Y-%m-%d')
         edad = (hoy - fecha_nac).days // 365
@@ -34,10 +34,12 @@ def registro():
             flash('Ese correo ya está registrado. Usa otro.', 'error')
             return render_template('registro.html', nombre=nombre, correo=correo)
 
-        #  Aquí va el guardado en base de datos
+        # Aquí va el guardado en base de datos
         usuarios[correo] = {'nombre': nombre, 'clave': clave, 'correo': correo}
-        flash('Registro exitoso. Ahora inicia sesión.', 'success')
-        return redirect(url_for('login'))
+        
+        # CAMBIO CLAVE AQUÍ: Redirigir al 'index' después de un registro exitoso
+        flash('¡Registro exitoso! Bienvenido a Pool Nene.', 'success') # Mensaje más apropiado
+        return redirect(url_for('index')) # Redirecciona a la página principal
 
     return render_template('registro.html')
 
@@ -61,7 +63,7 @@ def login():
 def recuperar():
     correo = request.form.get('correo')
 
-    #  Esto se cambiará por consulta a base de datos
+    # Esto se cambiará por consulta a base de datos
     if correo in usuarios:
         flash('Se ha enviado un enlace de recuperación al correo.', 'success')
     else:

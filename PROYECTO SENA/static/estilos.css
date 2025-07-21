@@ -150,7 +150,7 @@ html, body {
   background-color: #2d6a3c;
 }
 
-/* Carrusel */
+/* --- Carrusel --- */
 .seccion-carrusel {
   max-width: 1000px;
   margin: 0 auto 40px auto;
@@ -159,32 +159,40 @@ html, body {
   border: 5px solid #1eaa6f;
   border-radius: 12px;
   box-shadow: 0 0 10px #1eaa6f66;
+  overflow: hidden; /* Asegura que no haya desbordamientos de contenido */
 }
 
-.carrusel-img {
+/* Establece una altura fija para el contenedor de los slides del carrusel */
+.carousel-inner {
+  height: 65vh; /* Puedes ajustar este valor si 65vh es muy alto o muy bajo */
+  overflow: hidden; /* Importante para que las imágenes no se desborden si son más grandes */
+}
+
+/* ESTILO CLAVE: Asegurar que las imágenes llenen el carrusel */
+.carousel-item img {
   width: 100%;
-  height: 65vh;
-  object-fit: cover;
+  height: 100%; /* ¡AHORA SÍ OCUPA EL 100% DE LA ALTURA DEL CONTENEDOR! */
+  object-fit: cover; /* Esto hace que la imagen CUBRA TODO el espacio, recortando si es necesario */
 }
 
-/* Texto del carrusel */
-.texto-carrusel {
+/* El texto del carrusel */
+.carousel-caption {
   background: rgba(0, 0, 0, 0.6);
   padding: 15px;
   border-radius: 10px;
 }
 
-.texto-carrusel h5 {
+.carousel-caption h5 {
   font-size: 1.75rem;
   color: white;
 }
 
-.texto-carrusel p {
+.carousel-caption p {
   font-size: 1rem;
   color: #ddd;
 }
 
-/* Sección Nosotros */
+/* --- Sección Nosotros --- */
 .seccion-nosotros {
   padding: 40px 20px;
   text-align: center;
@@ -206,13 +214,14 @@ html, body {
   line-height: 1.6;
 }
 
-/* Footer */
+/* --- Footer --- */
 .pie-pagina {
   background-color: #000;
   padding: 30px 20px;
   color: #aaa;
   font-size: 0.95rem;
   border-top: 1px solid #222;
+  margin-top: auto; /* IMPORTANTE para que el footer se quede abajo en index2.html */
 }
 
 .contenido-pie {
@@ -227,7 +236,7 @@ html, body {
   margin: 5px 0;
 }
 
-/* Redes sociales */
+/* Redes sociales (pie de página) */
 .redes-sociales a {
   width: 50px;
   height: 50px;
@@ -235,19 +244,17 @@ html, body {
   margin: 0 10px;
 }
 
+/* Aquí se quitan todos los filtros de color para que los logos muestren sus colores originales */
 .redes-sociales img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0) invert(1);
+  /* Eliminadas las líneas de 'filter' que causaban el color verde o blanco/negro */
   transition: transform 0.2s ease;
   display: block;
 }
 
-.redes-sociales img:hover {
-  transform: scale(1.1);
-}
-
+/* --- Botones Flotantes (estos no se modifican) --- */
 .whatsapp-float {
   position: fixed;
   top: 40%;
@@ -343,7 +350,6 @@ html, body {
   transition: all 0.2s ease-in-out;
   width: 170px !important;
   margin-left: 120px !important;
-  
 }
 
 .boton-verde:hover {
@@ -382,17 +388,10 @@ html, body {
   100% { opacity: 0; display: none; }
 }
 
-/* Index2 */ 
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  background-color: #000 !important;
-  color: #1eff9a;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  display: flex;
-  flex-direction: column;
-}
+/* Estilos específicos para index2.html (Panel de Usuario) */
+/* Importante: el 'body' de index2.html también necesita 'display: flex' y 'flex-direction: column'
+   para que el 'margin-top: auto' del footer funcione correctamente.
+   He añadido estas propiedades en el 'body' general al inicio de este CSS. */
 
 .titulo-bienvenida {
   text-align: center;
@@ -410,7 +409,7 @@ body {
   margin-bottom: 40px;
 }
 
-/* Cada caja */
+/* Cada caja de función en index2.html */
 .caja-funcion {
   background-color: #1a1a1a;
   border: 2px solid #1eff9a;
@@ -421,7 +420,7 @@ body {
   transition: transform 0.2s ease-in-out;
   cursor: pointer;
   text-decoration: none;
-  color: #1eff9a;
+  color: #1eff9a; 
 }
 
 .caja-funcion:hover {
@@ -432,40 +431,10 @@ body {
 .caja-funcion h3 {
   font-size: 1.4em;
   margin-bottom: 15px;
-  color: #1eff9a;
+  color: #1eff9a; 
 }
 
 .caja-funcion p {
   font-size: 1em;
   color: #ccc;
-}
-
-.pie-pagina {
-  background-color: #111;
-  color: #fff;
-  padding: 30px 20px;
-  text-align: center;
-  font-size: 0.9em;
-  border-top: 2px solid #1eff9a;
-  margin-top: auto; 
-}
-
-.pie-pagina .contenido-pie {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.pie-pagina .info-contacto p {
-  margin: 5px 0;
-}
-
-.pie-pagina .redes-sociales {
-  margin-top: 15px;
-}
-
-.pie-pagina .redes-sociales img {
-  width: 30px;
-  margin: 0 10px;
-  filter: brightness(0) saturate(100%) invert(55%) sepia(92%) saturate(1047%) hue-rotate(96deg) brightness(97%) contrast(102%);
 }
