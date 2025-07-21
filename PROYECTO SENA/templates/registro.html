@@ -26,7 +26,6 @@
             {% endif %}
           {% endwith %}
 
-
           <form method="post" action="/registro">
             <div class="mb-3">
               <label class="form-label">Usuario</label>
@@ -40,11 +39,19 @@
               <label class="form-label">Contraseña</label>
               <input type="password" name="clave" class="form-control campo" required>
             </div>
+            <div class="mb-3">
+              <label class="form-label">Fecha de nacimiento</label>
+              <input type="date" name="fecha_nacimiento" class="form-control campo" required>
+            </div>
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" name="mayor_edad" id="mayor_edad" required>
+              <label class="form-check-label" for="mayor_edad">
+                Confirmo que soy mayor de 18 años
+              </label>
+            </div>
             <button type="submit" class="btn boton-verde">Registrarse</button>
             <p class="text-center mt-3">¿Ya tienes cuenta? <a href="{{ url_for('login') }}" class="enlace-verde">Inicia sesión</a></p>
           </form>
-
-          
         </div>
       </div>
     </div>

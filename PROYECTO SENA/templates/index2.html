@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel Usuario - Pool Nene</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+</head>
+<body style="background-color: #000; color: white; margin: 0; padding: 0; font-family: Arial, sans-serif;">
+
+  <h1 style="text-align: center; padding: 40px 0 20px 0; font-size: 2.5em;">Bienvenido a Pool Nene</h1>
+
+  <div style="display: flex; justify-content: center; gap: 30px; padding-bottom: 50px;">
+    <a href="/reservar" class="caja-funcion">
+      <h2>Reservar</h2>
+    </a>
+    <a href="/perfil" class="caja-funcion">
+      <h2>Perfil</h2>
+    </a>
+    <a href="/eventos" class="caja-funcion">
+      <h2>Eventos</h2>
+    </a>
+    <a href="/torneos" class="caja-funcion">
+      <h2>Torneos</h2>
+    </a>
+  </div>
+
+  <!-- Pie de página copiado del index.html -->
+  <footer class="pie-pagina">
+    <div class="contenido-pie">
+      <div class="info-contacto">
+        <p>CALLE 18 AV ESQUÍNA BARRIO OSPINA PÉREZ - CÚCUTA</p>
+        <p>Email: contacto@poolnene.com</p>
+        <p>&copy; 2025 Pool Nene. Todos los derechos reservados.</p>
+      </div>
+      <div class="redes-sociales">
+        <a href="https://www.facebook.com/share/12Lws1yYu4U/" target="_blank">
+          <img src="{{ url_for('static', filename='imagenes/facebook.png') }}" alt="Facebook">
+        </a>
+        <a href="https://www.instagram.com/masterpoolnene?igsh=aGkxdHZzYzFldW12" target="_blank">
+          <img src="{{ url_for('static', filename='imagenes/instagram.png') }}" alt="Instagram">
+        </a>
+        <a href="https://wa.me/573010000000" target="_blank">
+          <img src="{{ url_for('static', filename='imagenes/wasap.png') }}" alt="WhatsApp">
+        </a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

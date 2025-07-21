@@ -295,7 +295,7 @@ html, body {
 
 /* Formularios de registro e inicio de sesión */
 .fondo-form {
-  background-color: #4a5251c7 !important; /* Gris muy oscuro que combina con negro */
+  background-color: #4a5251c7 !important; 
   color: white;
   font-family: Arial, sans-serif;
   min-height: 100vh;
@@ -304,7 +304,7 @@ html, body {
 }
 
 .caja-formulario {
-  background-color: #000000; /* Fondo del formulario negro puro */
+  background-color: #000000; 
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 0 20px #1eff9a55;
@@ -380,4 +380,92 @@ html, body {
   0% { opacity: 1; }
   80% { opacity: 1; }
   100% { opacity: 0; display: none; }
+}
+
+/* Index2 */ 
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #000 !important;
+  color: #1eff9a;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.titulo-bienvenida {
+  text-align: center;
+  color: #1eff9a;
+  font-size: 2.5em;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.contenedor-cajas {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+/* Cada caja */
+.caja-funcion {
+  background-color: #1a1a1a;
+  border: 2px solid #1eff9a;
+  border-radius: 20px;
+  padding: 30px;
+  width: 220px;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+  text-decoration: none;
+  color: #1eff9a;
+}
+
+.caja-funcion:hover {
+  transform: scale(1.05);
+  background-color: #262626;
+}
+
+.caja-funcion h3 {
+  font-size: 1.4em;
+  margin-bottom: 15px;
+  color: #1eff9a;
+}
+
+.caja-funcion p {
+  font-size: 1em;
+  color: #ccc;
+}
+
+.pie-pagina {
+  background-color: #111;
+  color: #fff;
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 0.9em;
+  border-top: 2px solid #1eff9a;
+  margin-top: auto; 
+}
+
+.pie-pagina .contenido-pie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pie-pagina .info-contacto p {
+  margin: 5px 0;
+}
+
+.pie-pagina .redes-sociales {
+  margin-top: 15px;
+}
+
+.pie-pagina .redes-sociales img {
+  width: 30px;
+  margin: 0 10px;
+  filter: brightness(0) saturate(100%) invert(55%) sepia(92%) saturate(1047%) hue-rotate(96deg) brightness(97%) contrast(102%);
 }
