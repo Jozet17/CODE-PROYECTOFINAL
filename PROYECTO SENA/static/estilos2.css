@@ -1,0 +1,137 @@
+body.usuario-body {
+  background-color: #000;
+  color: white;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.usuario-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.fila {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.columna {
+  flex: 1;
+  min-width: 280px;
+}
+
+.perfil-usuario {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  justify-content: flex-start;
+  padding: 20px 0;
+  border-bottom: 1px solid #1eff9a;
+}
+
+.perfil-img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.foto-circular {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #1eff9a;
+}
+
+.editar-foto {
+  margin-top: 10px;
+  color: #aaa;
+  font-size: 0.9em;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.bienvenida-texto {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.bienvenida-texto h2 {
+  color: #1eff9a;
+  font-size: 2em;
+  margin: 0;
+}
+
+.seccion-central {
+  gap: 40px;
+}
+
+.datos-personales h3,
+.accesos-directos h3 {
+  color: #1eff9a;
+  margin-bottom: 20px;
+}
+
+.datos-personales label {
+  display: block;
+  margin-top: 10px;
+  color: #1eff9a;
+}
+
+.datos-personales input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #111;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.input-edit {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-edit a {
+  color: #1eff9a;
+  text-decoration: underline;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+input[readonly] {
+  background-color: #111;
+  color: #fff;
+  cursor: not-allowed;
+  opacity: 1; /* <-- Esto evita que se vea opaco */
+}
+
+.botones-usuario {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.accesos-directos .btn {
+  padding: 15px;
+  font-size: 1em;
+  background-color: transparent;
+  border: 2px solid #1eff9a;
+  color: #1eff9a;
+  transition: all 0.2s ease;
+}
+
+.accesos-directos .btn:hover {
+  background-color: #1eff9a;
+  color: #000;
+}

@@ -19,7 +19,7 @@ html, body {
 .menu {
   display: none;
   position: absolute;
-  top: 70px; /* Ajusta según la altura de tu header */
+  top: 70px;
   right: 20px;
   background-color: #111;
   list-style: none;
@@ -69,7 +69,7 @@ html, body {
   gap: 10px;
 }
 
-.boton-registro{
+.boton-registro {
   background-color: #000000;
   color: white;
   border: 2px solid #1e4d2b;
@@ -94,7 +94,7 @@ html, body {
   background-color: #2d6a3c;
 }
 
-/* Video portada */
+/* Sección Video */
 .seccion-video {
   position: relative;
   width: 100%;
@@ -150,7 +150,7 @@ html, body {
   background-color: #2d6a3c;
 }
 
-/* --- Carrusel --- */
+/* Carrusel */
 .seccion-carrusel {
   max-width: 1000px;
   margin: 0 auto 40px auto;
@@ -159,40 +159,31 @@ html, body {
   border: 5px solid #1eaa6f;
   border-radius: 12px;
   box-shadow: 0 0 10px #1eaa6f66;
-  overflow: hidden; /* Asegura que no haya desbordamientos de contenido */
 }
 
-/* Establece una altura fija para el contenedor de los slides del carrusel */
-.carousel-inner {
-  height: 65vh; /* Puedes ajustar este valor si 65vh es muy alto o muy bajo */
-  overflow: hidden; /* Importante para que las imágenes no se desborden si son más grandes */
-}
-
-/* ESTILO CLAVE: Asegurar que las imágenes llenen el carrusel */
-.carousel-item img {
+.carrusel-img {
   width: 100%;
-  height: 100%; /* ¡AHORA SÍ OCUPA EL 100% DE LA ALTURA DEL CONTENEDOR! */
-  object-fit: cover; /* Esto hace que la imagen CUBRA TODO el espacio, recortando si es necesario */
+  height: 65vh;
+  object-fit: cover;
 }
 
-/* El texto del carrusel */
-.carousel-caption {
+.texto-carrusel {
   background: rgba(0, 0, 0, 0.6);
   padding: 15px;
   border-radius: 10px;
 }
 
-.carousel-caption h5 {
+.texto-carrusel h5 {
   font-size: 1.75rem;
   color: white;
 }
 
-.carousel-caption p {
+.texto-carrusel p {
   font-size: 1rem;
   color: #ddd;
 }
 
-/* --- Sección Nosotros --- */
+/* Sección Nosotros */
 .seccion-nosotros {
   padding: 40px 20px;
   text-align: center;
@@ -214,14 +205,14 @@ html, body {
   line-height: 1.6;
 }
 
-/* --- Footer --- */
+/* Footer */
 .pie-pagina {
   background-color: #000;
   padding: 30px 20px;
   color: #aaa;
   font-size: 0.95rem;
   border-top: 1px solid #222;
-  margin-top: auto; /* IMPORTANTE para que el footer se quede abajo en index2.html */
+  margin-top: auto;
 }
 
 .contenido-pie {
@@ -236,7 +227,6 @@ html, body {
   margin: 5px 0;
 }
 
-/* Redes sociales (pie de página) */
 .redes-sociales a {
   width: 50px;
   height: 50px;
@@ -244,63 +234,20 @@ html, body {
   margin: 0 10px;
 }
 
-/* Aquí se quitan todos los filtros de color para que los logos muestren sus colores originales */
 .redes-sociales img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Eliminadas las líneas de 'filter' que causaban el color verde o blanco/negro */
+  filter: brightness(0) invert(1);
   transition: transform 0.2s ease;
   display: block;
 }
 
-/* --- Botones Flotantes (estos no se modifican) --- */
-.whatsapp-float {
-  position: fixed;
-  top: 40%;
-  right: 20px;
-  z-index: 999;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  overflow: hidden;
-  background-color: transparent;
+.redes-sociales img:hover {
+  transform: scale(1.1);
 }
 
-.facebookk-float {
-  position: fixed;
-  top: 52%;
-  right: 20px;
-  z-index: 998;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  overflow: hidden;
-  background-color: transparent;
-}
-
-.instagramm-float {
-  position: fixed;
-  top: 64%;
-  right: 20px;
-  z-index: 997;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  overflow: hidden;
-  background-color: transparent;
-}
-
-.whatsapp-float img,
-.facebookk-float img,
-.instagramm-float img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* Formularios de registro e inicio de sesión */
+/* Formularios */
 .fondo-form {
   background-color: #4a5251c7 !important; 
   color: white;
@@ -382,59 +329,55 @@ html, body {
   animation: desaparecer 3s ease forwards;
 }
 
+/* --- Botones Flotantes --- */
+.whatsapp-float {
+  position: fixed;
+  top: 40%;
+  right: 20px;
+  z-index: 999;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.facebookk-float {
+  position: fixed;
+  top: 52%;
+  right: 20px;
+  z-index: 998;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.instagramm-float {
+  position: fixed;
+  top: 64%;
+  right: 20px;
+  z-index: 997;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.whatsapp-float img,
+.facebookk-float img,
+.instagramm-float img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
 @keyframes desaparecer {
   0% { opacity: 1; }
   80% { opacity: 1; }
   100% { opacity: 0; display: none; }
-}
-
-/* Estilos específicos para index2.html (Panel de Usuario) */
-/* Importante: el 'body' de index2.html también necesita 'display: flex' y 'flex-direction: column'
-   para que el 'margin-top: auto' del footer funcione correctamente.
-   He añadido estas propiedades en el 'body' general al inicio de este CSS. */
-
-.titulo-bienvenida {
-  text-align: center;
-  color: #1eff9a;
-  font-size: 2.5em;
-  margin-top: 40px;
-  margin-bottom: 30px;
-}
-
-.contenedor-cajas {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-bottom: 40px;
-}
-
-/* Cada caja de función en index2.html */
-.caja-funcion {
-  background-color: #1a1a1a;
-  border: 2px solid #1eff9a;
-  border-radius: 20px;
-  padding: 30px;
-  width: 220px;
-  text-align: center;
-  transition: transform 0.2s ease-in-out;
-  cursor: pointer;
-  text-decoration: none;
-  color: #1eff9a; 
-}
-
-.caja-funcion:hover {
-  transform: scale(1.05);
-  background-color: #262626;
-}
-
-.caja-funcion h3 {
-  font-size: 1.4em;
-  margin-bottom: 15px;
-  color: #1eff9a; 
-}
-
-.caja-funcion p {
-  font-size: 1em;
-  color: #ccc;
 }

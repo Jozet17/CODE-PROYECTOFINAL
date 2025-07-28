@@ -9,11 +9,9 @@
 </head>
 <body>
 <header class="encabezado">
-  
   <div class="contenedor-logo">
     <img src="{{ url_for('static', filename='imagenes/logo.jpg') }}" alt="Logo" class="logo">
   </div>
-
   <div class="contenedor-botones" id="botones-auth">
     <button class="boton-registro" onclick="window.location.href='/registro'">Registrarse</button>
     <button class="boton-sesion" onclick="window.location.href='/login'">Iniciar Sesión</button>
@@ -22,11 +20,12 @@
 </header>
 
 <ul class="menu" id="menu">
-  <li><a href="#">Inicio</a></li>
-  <li><a href="#">Servicios</a></li>
-  <li><a href="#">Eventos</a></li>
-  <li><a href="#">Ofertas</a></li>
-  <li><a href="/logout" id="cerrar-sesion" style="display: none;">Cerrar sesión</a></li>
+  <li><a href="{{ url_for('index') }}">Inicio</a></li>
+  <li><a href="{{ url_for('panel_usuario') }}">Usuario</a></li>
+  <li><a href="{{ url_for('ver_servicios') }}">Ver servicios</a></li>
+  <li><a href="{{ url_for('ver_eventos') }}">Consultar eventos</a></li>
+  <li><a href="{{ url_for('ver_ofertas') }}">Ofertas del día</a></li>
+  <li><a href="{{ url_for('logout') }}" id="cerrar-sesion" style="display: none;">Cerrar sesión</a></li>
 </ul>
 
 <section class="seccion-video">
@@ -41,51 +40,39 @@
 </section>
 
 <section class="seccion-carrusel">
-  <div id="carrusel-principal" class="carousel slide" data-bs-ride="carousel">
+  <div id="carrusel-principal" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+
+    <!-- Indicadores -->
     <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carrusel-principal" data-bs-slide-to="0" class="active"></button>
-      <button type="button" data-bs-target="#carrusel-principal" data-bs-slide-to="1"></button>
-      <button type="button" data-bs-target="#carrusel-principal" data-bs-slide-to="2"></button>
-      <button type="button" data-bs-target="#carrusel-principal" data-bs-slide-to="3"></button>
+      {% for imagen in imagenes %}
+        <button type="button" data-bs-target="#carrusel-principal" data-bs-slide-to="{{ loop.index0 }}" class="{% if loop.index0 == 0 %}active{% endif %}"></button>
+      {% endfor %}
     </div>
+
+    <!-- Carrusel de imágenes -->
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="{{ url_for('static', filename='imagenes/mesas.jpeg') }}" class="d-block  carrusel-img" alt="Mesas">
-        <div class="carousel-caption d-none d-md-block texto-carrusel">
-          <h5>Mesas de alta calidad</h5>
-          <p>Las mejores condiciones para tu juego.</p>
+      {% for imagen in imagenes %}
+        <div class="carousel-item {% if loop.index0 == 0 %}active{% endif %}">
+          <img src="{{ url_for('static', filename='imagenes/carrusel/' + imagen) }}" class="d-block carrusel-img" alt="Slide {{ loop.index }}">
+          <div class="carousel-caption d-none d-md-block texto-carrusel">
+            <h5>Slide {{ loop.index }}</h5>
+            <p>Descripción para la imagen {{ loop.index }}</p>
+          </div>
         </div>
-      </div>
-      <div class="carousel-item">
-        <img src="{{ url_for('static', filename='imagenes/bebidas.jpeg') }}" class="d-block  carrusel-img" alt="Bebidas">
-        <div class="carousel-caption d-none d-md-block texto-carrusel">
-          <h5>Variedad de bebidas y productos</h5>
-          <p>Precios increíbles.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="{{ url_for('static', filename='imagenes/evento.png') }}" class="d-block w-100 carrusel-img img-torneo" alt="Torneos">
-        <div class="carousel-caption d-none d-md-block texto-carrusel">
-          <h5>Eventos especiales</h5>
-          <p>No te pierdas nuestros torneos.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="{{ url_for('static', filename='imagenes/bienvenido.jpg') }}" class="d-block carrusel-img" alt="Ambiente">
-        <div class="carousel-caption d-none d-md-block texto-carrusel">
-          <h5>Ambiente familiar</h5>
-          <p>Ideal para venir con amigos o en pareja.</p>
-        </div>
-      </div>
+      {% endfor %}
     </div>
+
+    <!-- Controles -->
     <button class="carousel-control-prev" type="button" data-bs-target="#carrusel-principal" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#carrusel-principal" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
     </button>
+
   </div>
 </section>
+
 
 <section class="seccion-nosotros" id="nosotros">
   <div class="contenedor-nosotros">
@@ -102,17 +89,6 @@
       <p>CALLE 18 AV ESQUÍNA BARRIO OSPINA PÉREZ - CÚCUTA</p>
       <p>Email: contacto@poolnene.com</p>
       <p>&copy; 2025 Pool Nene. Todos los derechos reservados.</p>
-    </div>
-    <div class="redes-sociales">
-      <a href="https://www.facebook.com/share/12Lws1yYu4U/" target="_blank">
-        <img src="{{ url_for('static', filename='imagenes/facebook.png') }}" alt="Facebook">
-      </a>
-      <a href="https://www.instagram.com/masterpoolnene?igsh=aGkxdHZzYzFldW12" target="_blank">
-        <img src="{{ url_for('static', filename='imagenes/instagram.png') }}" alt="Instagram">
-      </a>
-      <a href="https://wa.me/573010000000" target="_blank">
-        <img src="{{ url_for('static', filename='imagenes/wasap.png') }}" alt="WhatsApp">
-      </a>
     </div>
   </div>
 </footer>
@@ -135,56 +111,14 @@
   </a>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
-  const menu = document.getElementById('menu');
-  const abrirMenu = document.getElementById('abrir-menu');
-  const botonesAuth = document.getElementById('botones-auth');
-  const cerrarSesion = document.getElementById('cerrar-sesion');
-
-  abrirMenu.addEventListener('click', (e) => {
-    e.stopPropagation();
-    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!menu.contains(e.target) && !abrirMenu.contains(e.target)) {
-      menu.style.display = 'none';
-    }
-  });
-
   const usuarioIniciado = {{ (session.get('usuario') is not none) | tojson }};
-  if (usuarioIniciado) {
-    botonesAuth.querySelector('.boton-registro').style.display = 'none';
-    botonesAuth.querySelector('.boton-sesion').style.display = 'none';
-    cerrarSesion.style.display = 'block';
-  } else {
-    cerrarSesion.style.display = 'none';
-  }
-
   const mensaje = {{ mensaje | tojson }};
-  if (mensaje) {
-    const div = document.createElement('div');
-    div.textContent = mensaje;
-    div.style.position = 'fixed';
-    div.style.top = '50%';
-    div.style.left = '50%';
-    div.style.transform = 'translate(-50%, -50%)';
-    div.style.background = '#1eff9a';
-    div.style.color = '#000';
-    div.style.padding = '15px 25px';
-    div.style.fontSize = '20px';
-    div.style.borderRadius = '12px';
-    div.style.zIndex = '9999';
-    div.style.boxShadow = '0 0 10px rgba(0,0,0,0.5)';
-    document.body.appendChild(div);
-
-    setTimeout(() => {
-      div.remove();
-    }, 3000);
-  }
 </script>
+
+<script src="{{ url_for('static', filename='js/JsMain.js') }}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
